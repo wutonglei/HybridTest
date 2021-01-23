@@ -31,6 +31,10 @@ public class JavaAndJsActivity extends AppCompatActivity {
                 //注意这里必须延后加载 不能直接放数据sdasdsa 传入的数据
 //                javaCallJs对应h5的方法
                 webView.loadUrl("javascript:javaCallJs('梧桐+" + i + "')");
+
+                String json = "[{\"name\":\"再次调用\", \"phone\":\"18600012345\"}]";
+                // 调用JS中的方法
+                webView.loadUrl("javascript:show('" + json + "')");
 //                setContentView(webView);
 //                webView.loadUrl("javascript:javaCallJs(" + "'" + "sdasdsa" + "'" + ")");
 //                setContentView(webView);
@@ -89,6 +93,7 @@ public class JavaAndJsActivity extends AppCompatActivity {
     }
 
     private static final String TAG = "JavaAndJsActivity";
+
     class H5ButtonInterface {
         @JavascriptInterface
         public void showToast() {
@@ -118,6 +123,17 @@ public class JavaAndJsActivity extends AppCompatActivity {
         public void call(String t) {
 //            playVideo(itemid, videourl, itemtitle)
             Toast.makeText(JavaAndJsActivity.this, "Android 被 Js 调用" + t, Toast.LENGTH_SHORT).show();
+
+            Log.i(TAG, "call: " + Thread.currentThread().getName());   //JavaBridge 线程
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    String json = "[{\"name\":\"反馈\", \"phone\":\"18600012345\"}]";  // main
+                    // 调用JS中的方法
+                    webView.loadUrl("javascript:show('" + json + "')");
+                    Log.i(TAG, "call: " + Thread.currentThread().getName());
+                }
+            });
         }
 
     }
