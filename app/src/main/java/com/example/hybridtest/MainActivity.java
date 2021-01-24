@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, FileJsActivity.class);
+                startActivity(intent);
             }
         });
         findViewById(R.id.btn_call).setOnClickListener(new View.OnClickListener() {

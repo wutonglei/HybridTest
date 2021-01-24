@@ -35,6 +35,7 @@ public class JavaAndJsActivity extends AppCompatActivity {
                 String json = "[{\"name\":\"再次调用\", \"phone\":\"18600012345\"}]";
                 // 调用JS中的方法
                 webView.loadUrl("javascript:show('" + json + "')");
+
 //                setContentView(webView);
 //                webView.loadUrl("javascript:javaCallJs(" + "'" + "sdasdsa" + "'" + ")");
 //                setContentView(webView);
