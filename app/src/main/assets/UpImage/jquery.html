@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="stylesheet" href="css/index.css"/>
+
+    <script>
+function changeSrc()
+{
+document.getElementById("myImage").src="hackanm.gif";
+}
+
+function displayImg(path) {
+		console.log("显示图片");
+		document.getElementById("myImage").src="file://" + path;
+	}
+
+    </script>
+</head>
+<body>
+<div class="content">
+    <h1>我是网页</h1>
+    <img/>
+    <img/>
+    <img/>
+    <img/>
+</div>
+
+<input type="button" value="点击Android被调用" onclick="window.android.showToast()"/>
+<img   id="myImage" src="news_comment_popup_bg.png"  onclick="window.android.takePhoto()" />
+
+
+</body>
+</html>
